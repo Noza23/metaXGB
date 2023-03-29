@@ -9,3 +9,18 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Imports: 
+    checkmate (>= 2.1.0),
+    curl (>= 5.0.0),
+    DALEXtra (>= 2.2.1),
+    data.table (>= 1.14.8),
+    e1071 (>= 1.7.13),
+    future (>= 1.32.0),
+    ggplot2,
+    mlr3 (>= 0.15.0),
+    mlr3learners (>= 0.5.6),
+    mlr3misc (>= 0.11.0),
+    mlr3oml (>= 0.7.0),
+    mlr3pipelines (>= 0.4.2)
+Depends: 
+    R (>= 4.2.2)
