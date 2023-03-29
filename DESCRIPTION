@@ -1,0 +1,11 @@
+Package: metaBoost
+Title: Meta-Learn XGBoost Hyperparameters
+Version: 0.0.0.9000
+Authors@R: 
+    person("Giorgi", "Nozadze", , "G.Nozadze@campus.lmu.de", role = c("aut", "cre"))
+Description: Meta-Learn XGBoost Hyperparameters based on task meta-features and meta-data
+  of different Hyperparameter performances on it.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
