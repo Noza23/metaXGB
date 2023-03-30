@@ -26,12 +26,12 @@ devtools::install_github("git@github.com:Noza23/metaBoost.git")
 ## Instruction
 
 As a first step, following code should be executed to set up directories
-and download meta_data.
+and download meta_data:
 
 ``` r
 library(metaBoost)
 setup_project(dir = "Directory where the Project should be set up", timeout = 300)
 ```
 
-Afterwards follow the main.R script in the Project directory metaXGB,
-created by setup_project() function
+Afterwards follow the **main.R** script in the Project directory
+metaXGB, created by setup_project() function.
