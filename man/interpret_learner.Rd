@@ -7,6 +7,8 @@
 interpret_learner(model, learner, task, new_data, class)
 }
 \arguments{
+\item{model}{(\code{Learner(1)}) model extracted from mlr3 learner}
+
 \item{learner}{(\code{Learner(1)}) mlr3 learner}
 
 \item{task}{(\code{Task(1)}) mlr3 task}

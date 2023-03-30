@@ -17,11 +17,11 @@ metalearn_config(
 
 \item{meta_feature_names}{\code{data.table()} names of task meta_features}
 
+\item{meta_features}{\code{data.table()} task meta_features}
+
 \item{xgboost_meta_data}{\code{data.table()} xgboost meta_data}
 
 \item{seed}{\code{numeric(1)} for reproducibility}
-
-\item{meta_feature}{\code{data.table()} task meta_features}
 }
 \value{
 \code{data.table} of 2 different sets of HP configurations one with highest predicted accuracy and one with small training time.

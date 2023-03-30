@@ -47,7 +47,7 @@ find_similar_tasks = function(task_id, meta_features, meta_feature_names, meta_d
   # Choose at most 3 similar data sets in max similarity diviance 0.05
   data_ids = meta_features_mutated$data_id[order(rank(-similarities))]
   similarities_chosen = round(
-    na.omit(sort(similarities[similarities > (max(similarities) - 0.05)], decreasing = TRUE)[1:3]),
+    stats::na.omit(sort(similarities[similarities > (max(similarities) - 0.05)], decreasing = TRUE)[1:3]),
     digits = 3
   )
   n = length(similarities_chosen)

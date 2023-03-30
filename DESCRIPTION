@@ -16,11 +16,14 @@ Imports:
     data.table (>= 1.14.8),
     e1071 (>= 1.7.13),
     future (>= 1.32.0),
-    ggplot2,
+    graphics,
+    grDevices,
     mlr3 (>= 0.15.0),
     mlr3learners (>= 0.5.6),
     mlr3misc (>= 0.11.0),
     mlr3oml (>= 0.7.0),
-    mlr3pipelines (>= 0.4.2)
+    mlr3pipelines (>= 0.4.2),
+    stats,
+    utils
 Depends: 
-    R (>= 4.2.2)
+    R (>= 4.2.0)

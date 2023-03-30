@@ -1,6 +1,7 @@
 #' @title Interpret Performance Estimator
 #' @description Predictions are interpreted using simple Feature Impurity bar plots and
 #' Ceteris Paribus Plots from DALEX package.
+#' @param model (`Learner(1)`) model extracted from mlr3 learner
 #' @param learner (`Learner(1)`) mlr3 learner
 #' @param task (`Task(1)`) mlr3 task
 #' @param new_data (`data.table(1)`) Single test data point for Ceteris Paribus Plots

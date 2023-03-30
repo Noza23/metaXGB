@@ -4,7 +4,7 @@
 #' configs with accuracy over 0.55 get label "good".
 #' @details For details refer to report in the repository.
 #' @param cluster_data `data.table(1)` all data points from similar tasks
-#' @param threshold `numeric(1)` threshold for bad/good labeling [between 0 and 1]
+#' @param threshold `numeric(1)` threshold for bad/good labeling between 0 and 1
 #' @param nthread `integer(1)` number of cores to be used when training a learner
 #' @param class `integer(1)` cluster identifier
 #' @return `data.table(1)` containing "good" configurations predicted with very high probability over 0.9.

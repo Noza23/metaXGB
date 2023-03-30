@@ -12,7 +12,7 @@
 #' }
 #' @param task_id `integer(1)` OpenML task_id
 #' @param meta_feature_names `data.table()` names of task meta_features
-#' @param meta_feature `data.table()` task meta_features
+#' @param meta_features `data.table()` task meta_features
 #' @param xgboost_meta_data `data.table()` xgboost meta_data
 #' @param seed `numeric(1)` for reproducibility
 #' @return `data.table` of 2 different sets of HP configurations one with highest predicted accuracy and one with small training time.

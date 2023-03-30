@@ -14,7 +14,7 @@ classify_good_bad(
 \arguments{
 \item{cluster_data}{\code{data.table(1)} all data points from similar tasks}
 
-\item{threshold}{\code{numeric(1)} threshold for bad/good labeling \link{between 0 and 1}}
+\item{threshold}{\code{numeric(1)} threshold for bad/good labeling between 0 and 1}
 
 \item{nthread}{\code{integer(1)} number of cores to be used when training a learner}
 

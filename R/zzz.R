@@ -5,25 +5,26 @@
 #' @import mlr3pipelines
 #' @import mlr3misc
 
-# @import curl
-# @import e1071
-# @import future
-# @import mlr3oml
-
-# Task-ids used in the Analysis
+#' @title  Test IDs
+#' @description test_ids refers to task_ids from OpenML.org used in Analysis.
 #' @export
 test_ids = c(
   16, 22, 31, 2074, 2079, 3493, 3907, 3913, 9950, 9952, 9971, 10106, 14954, 14970,
   146212, 146825, 167119, 167125, 168332, 168336
 )
-# Names of the meta-features used in Analysis
+
+#' @title  Meta_Feature Names
+#' @description Names of the meta_features used in Analysis.
 #' @export
 meta_feature_names = c(
   "data_id", "name", "status", "MajorityClassSize", "MaxNominalAttDistinctValues","MinorityClassSize",
   "NumberOfClasses", "NumberOfFeatures", "NumberOfInstances","NumberOfInstancesWithMissingValues",
   "NumberOfMissingValues", "NumberOfNumericFeatures", "NumberOfSymbolicFeatures"
 )
-# Default HP Configuration
+
+
+#' @title  Default Configuration
+#' @description Default HyperParameter Configuration for xgboost classifier.
 #' @export
 default_config = list(
   nrounds = 464,
