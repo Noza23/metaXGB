@@ -20,14 +20,14 @@ run_config = function(
     config = NULL,
     meta_config = TRUE,
     default = FALSE,
-    seed = 111,
+    seed = NULL,
     nthread = future::availableCores()[[1]],
     meta_features
 ) {
   # Check internet connection
   if (!curl::has_internet()) {stop("Internet Connection not detected")}
   assertInt(task_id, lower = 1)
-  assertNumeric(seed)
+  assertNumber(seed, null.ok = TRUE)
   assertFlag(meta_config)
   assertFlag(default)
   assertInt(nthread)
@@ -90,7 +90,8 @@ run_config = function(
       task_id,
       meta_feature_names,
       meta_features = meta_features,
-      meta_data
+      meta_data,
+      seed = seed
     )
     meta_final_result = lapply(
       meta_config,
