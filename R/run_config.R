@@ -92,11 +92,6 @@ run_config = function(
       meta_features = meta_features,
       meta_data
     )
-    # If best and fastest are the same run only once
-    # if (identical(meta_config$best, meta_config$fastest)) {
-    #   cat("\n[INFO] Both best and fastest configurations are identical, hereby it will be run only once.\n")
-    #   meta_config$fastest = NULL
-    # }
     meta_final_result = lapply(
       meta_config,
       FUN = function(x) {

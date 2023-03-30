@@ -31,8 +31,8 @@ find_similar_tasks = function(task_id, meta_features, meta_feature_names, meta_d
     affect_columns = selector_type(c("numeric", "integer")),
     id = "impute_missing"
   )
-  meta_features_mutated = imp_num$train(list(as_task_clust(meta_features_mutated)))[[1]]$data()
-  new_meta_features_mutated = imp_num$predict(list(as_task_clust(new_meta_features_mutated)))[[1]]$data()
+  meta_features_mutated = imp_num$train(list(mlr3cluster::as_task_clust(meta_features_mutated)))[[1]]$data()
+  new_meta_features_mutated = imp_num$predict(list(mlr3cluster::as_task_clust(new_meta_features_mutated)))[[1]]$data()
   setcolorder(new_meta_features_mutated, names(meta_features_mutated))
 
   # Similarity function (cosine similarity)
@@ -50,6 +50,19 @@ find_similar_tasks = function(task_id, meta_features, meta_feature_names, meta_d
     stats::na.omit(sort(similarities[similarities > (max(similarities) - 0.05)], decreasing = TRUE)[1:3]),
     digits = 3
   )
+
+  # Similarity plot
+  sim_plot = ggplot2::ggplot(
+    data = data.frame(data_id = factor(data_ids, levels = data_ids), cos_similarity = sort(similarities, T))
+  )  +
+    ggplot2::geom_col(aes(x = data_id, y = cos_similarity)) +
+    ggplot2::theme_classic() + ggplot2::theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+  fn = sprintf("plots/similarity_%s.pdf", task_id)
+  catf("[INFO] Saving similarity plot in %s\n", fn)
+  # Saving plot
+  ggplot2::ggsave(sim_plot, filename = fn)
+
   n = length(similarities_chosen)
   data_ids = data_ids[seq_len(n)]
 

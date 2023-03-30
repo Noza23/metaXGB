@@ -8,7 +8,8 @@ meta_data = metaBoost::read_meta_data(file = "data/external/xgboost_meta_data.cs
 test_ids = metaBoost::test_ids
 
 # Run Baseline on Default Configuration {test_ids}
-# Note: tasks with task_ids c(146825, 168332) can take up to 12 hours each, so in case of fast analysis exclude them from test_ids.
+# Note: Training tasks with task_ids c(146825, 168332) on Default Configuration can take up to 12 hours each,
+# so in case of fast analysis exclude them from test_ids.
 result_default = lapply(
   test_ids,
   FUN = metaBoost::run_config,
@@ -16,8 +17,9 @@ result_default = lapply(
   defult = TRUE
 )
 
-# Meta-Learn configuration and run in on {test_ids}: Meta-Learning takes about 15 min for each task_id.
-# Note: tasks with task_ids c(146825, 168332) can take up to 12 hours each, so in case of fast analysis exclude them from test_ids.
+# Meta-Learn configuration and run in on {test_ids}: Meta-Learning takes about 7-8 mins for each task_id.
+# Note: Above mentioned expensive Tasks with task_ids c(146825, 168332) need only about 12-15 min to train.
+# when using meta configuration, in contrast to 12 hours on default.
 result_meta = lapply(
   metaBoost::test_ids,
   FUN = metaBoost::run_config,
