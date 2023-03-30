@@ -11,7 +11,7 @@
 find_similar_tasks = function(task_id, meta_features, meta_feature_names, meta_data) {
 
   assertInt(task_id, lower = 0)
-  assertDataTable(meta_fetures)
+  assertDataTable(meta_features)
   assertCharacter(meta_feature_names, any.missing = FALSE)
   assertDataTable(meta_data)
 
