@@ -21,7 +21,7 @@ result_default = lapply(
 # Note: Above mentioned expensive Tasks with task_ids c(146825, 168332) need only about 12-15 min to train.
 # when using meta configuration, in contrast to 12 hours on default.
 result_meta = lapply(
-  metaBoost::test_ids,
+  test_ids,
   FUN = metaBoost::run_config,
   seed = 111,
   meta_config = TRUE,
