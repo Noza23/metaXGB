@@ -30,7 +30,7 @@ interpret_model = function(model, learner, task, new_data, class) {
     data = task$data()[, - c("auc")],
     y = task$truth()
   )
-  cp = suppressWarnings(predict_profile(learner_explain, new_data))
+  cp = suppressWarnings(DALEX::predict_profile(learner_explain, new_data))
   cp_DALEX = plot(cp) + ggplot2::ggtitle("Ceteris paribus for new prediction", " ")
   ggplot2::ggsave(
     cp_DALEX,
