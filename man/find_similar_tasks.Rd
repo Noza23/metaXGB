@@ -9,17 +9,17 @@ find_similar_tasks(task_id, meta_features, meta_feature_names, meta_data)
 \arguments{
 \item{task_id}{\code{integer(1)} task identifier on OpenML}
 
-\item{meta_features}{\code{data.table()} data.table of task_meta_features}
+\item{meta_features}{\code{data.table()} task_meta_features}
 
 \item{meta_feature_names}{\code{character()} meta_feature names}
 
-\item{meta_data}{\verb{data.table(} data.table of xgboost_meta_data}
+\item{meta_data}{\code{data.table()} xgboost_meta_data}
 }
 \value{
-\code{list()} containing data_ids of 3 most similar tasks, class identifier and meta_features.
+\code{list()} containing data_ids of 3 most similar tasks, class identifier and their meta_features.
 }
 \description{
-Using meta-features of different tasks, first mutates meta_features as described in
+Using meta-features of different tasks, first mutate meta_features as described in
 \code{\link{mutate_metafeatures}}
-and then computes cosine similarities on them to select 3 most similar tasks for given task.
+and then compute cosine similarities on them to select 3 most similar tasks for given task_id.
 }

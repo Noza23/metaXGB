@@ -22,5 +22,6 @@ run_perf_est_model(
 }
 \description{
 Runs RandomForest Regression with default HP config and 5 fold CV resampling
-on the "good" configurations resulted by the function call \code{\link{classify_good_bad}}.
+on the "good" configurations resulted by the function call \code{\link{classify_good_bad}}
+and tries to interpret it using \code{\link{interpret_model}} function.
 }

@@ -10,7 +10,7 @@ mutate_metafeatures(features)
 \item{features}{\code{data_table()} data.table of meta-features}
 }
 \value{
-\code{data.table()} containing mutated meta_features
+\code{data.table()} containing mutated meta_features.
 }
 \description{
 Mutates meta_features to make them comparable across different tasks:\cr

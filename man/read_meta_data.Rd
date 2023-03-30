@@ -10,7 +10,7 @@ read_meta_data(file)
 \item{file}{\code{character(1)} path to xgboost_meta_data file}
 }
 \value{
-\code{data.table()} of xgboost_meta_data
+\code{data.table()} of xgboost_meta_data.
 }
 \description{
 Except reading csv file, function also applies log_transformation to Hyperparameters: eta, gamma, lambda, alpha.\cr

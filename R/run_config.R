@@ -17,13 +17,13 @@
 #' @export
 run_config = function(
     task_id,
-    meta_features,
     config = NULL,
     meta_config = TRUE,
     default = FALSE,
     seed = NULL,
-    nthread = future::availableCores()[[1]]
-  ) {
+    nthread = future::availableCores()[[1]],
+    meta_features
+) {
   # Check internet connection
   if (!curl::has_internet()) {stop("Internet Connection not detected")}
   assertInt(task_id, lower = 1)
@@ -31,15 +31,14 @@ run_config = function(
   assertFlag(meta_config)
   assertFlag(default)
   assertInt(nthread)
-  assertDataTable(meta_features)
 
-  # case custom configuration
+  # Case custom configuration
   if(!is.null(config)) {
     meta_config = FALSE
     default = FALSE
   }
 
-  # case default configuration
+  # Case default configuration
   if (default) {
     # Case if Task has already been trained with default config.
     fn = sprintf("data/results/final_performance/default/result_default_%d", task_id)
@@ -76,13 +75,24 @@ run_config = function(
 
   # Case meta configuration: run two different HP configs through function recursion: one for best one for fastest
   if (meta_config) {
+    # Case if Task has already been trained with meta config.
+    fn = sprintf("data/results/final_performance/meta/result_meta_%d", task_id)
+    if (file.exists(fn)) {
+      cat(
+        "\n[INFO] Task has already been trained with meta config and has achieved following performance:\n"
+      )
+      meta_results = readRDS(fn)
+      print(t(sapply(meta_results, unlist)))
+      return(invisible(meta_results))
+    }
+    # Case not yet trained:
     meta_config = metalearn_config(
       task_id,
       meta_feature_names,
       meta_features = meta_features,
       meta_data
     )
-    # if best and fastest are the same run only once
+    # If best and fastest are the same run only once
     if (identical(meta_config$best, meta_config$fastest)) {
       cat("\n[INFO] Both best and fastest configurations are identical, hereby it will be run only once.\n")
       meta_config$fastest = NULL
@@ -139,6 +149,5 @@ run_config = function(
     saveRDS(final_result, file = fn)
     catf("\n[INFO] Default results have been saved under %s\n", fn)
   }
-
   invisible(final_result)
 }

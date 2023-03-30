@@ -4,7 +4,7 @@
 \alias{get_task_metafeatures}
 \title{Get meta features from OpenML}
 \usage{
-get_task_metafeatures(task_id, meta_feature_names = meta_feature_names)
+get_task_metafeatures(task_id, meta_feature_names)
 }
 \arguments{
 \item{task_id}{\code{integer(1)} task id}

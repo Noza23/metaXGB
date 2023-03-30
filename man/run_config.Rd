@@ -6,18 +6,16 @@
 \usage{
 run_config(
   task_id,
-  meta_features,
   config = NULL,
   meta_config = TRUE,
   default = FALSE,
   seed = NULL,
-  nthread = future::availableCores()[[1]]
+  nthread = future::availableCores()[[1]],
+  meta_features
 )
 }
 \arguments{
 \item{task_id}{\code{integer(1)} task id}
-
-\item{meta_features}{\code{data.table()} task meta_features}
 
 \item{config}{\code{list()} named list of configurations in case neither default nor meta_config, but custom config}
 
@@ -28,6 +26,8 @@ run_config(
 \item{seed}{\code{numeric(1)} seed for reproducibility}
 
 \item{nthread}{\code{integer(1)} number of cores to be used when training and predicting with learner}
+
+\item{meta_features}{\code{data.table()} task meta_features}
 }
 \value{
 invisible \code{list()} containing resulting AUC and train_time measures.

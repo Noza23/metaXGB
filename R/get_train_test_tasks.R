@@ -10,9 +10,9 @@ get_train_test_tasks = function(task_id) {
   assertInt(task_id, lower = 0)
 
   catf("Note: This Function uses only the first of the 10 CV train & test splits\n")
-  #get task
+  # Get task
   task = tsk("oml", task_id = task_id)
-  #get resampling splits
+  # Get resampling splits
   resampling = rsmp("oml", task_id = task_id)
 
   # we only use the first of the 10 CV folds

@@ -36,6 +36,6 @@ It executes following steps:\cr
 \item Run \code{\link{run_perf_est_model}} on resulting "good" points to build performance prediction model.
 \item Select final configurations using \code{\link{select_configs}}.
 \item Translate them into the format expected in mlr3 for xgboost learner using \code{\link{translate_config}}.
-\item Resulting Hyperparameters are then used in \code{\link{run_config}} to run xgboost on test task and evaluate them.
+\item Resulting Hyperparameters are then used in \code{\link{run_config}} to run XGBoost on test task and evaluate them.
 }
 }

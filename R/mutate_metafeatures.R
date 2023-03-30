@@ -11,9 +11,8 @@
 #'   NumberOfInstancesWithMissingVlauesRatio \tab \deqn{NumberOfInstancesWithMissingValues / NumberOfInstances}
 #' }
 #' @param features `data_table()` data.table of meta-features
-#' @return `data.table()` containing mutated meta_features
+#' @return `data.table()` containing mutated meta_features.
 #' @export
-
 mutate_metafeatures = function(features) {
   meta_feature_names = c(
     "data_id", "MajorityClassSize", "MaxNominalAttDistinctValues","MinorityClassSize", "NumberOfClasses",

@@ -4,7 +4,7 @@
 \alias{interpret_learner}
 \title{Interpret Performance Estimator}
 \usage{
-interpret_learner(learner, task, new_data, class)
+interpret_learner(model, learner, task, new_data, class)
 }
 \arguments{
 \item{learner}{(\code{Learner(1)}) mlr3 learner}

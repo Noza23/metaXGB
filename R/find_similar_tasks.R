@@ -1,13 +1,12 @@
 #' @title Cosine Similarity between tasks
-#'
-#' @description Using meta-features of different tasks, first mutates meta_features as described in
+#' @description Using meta-features of different tasks, first mutate meta_features as described in
 #' \code{\link{mutate_metafeatures}}
-#' and then computes cosine similarities on them to select 3 most similar tasks for given task.
+#' and then compute cosine similarities on them to select 3 most similar tasks for given task_id.
 #' @param task_id `integer(1)` task identifier on OpenML
-#' @param meta_features `data.table()` data.table of task_meta_features
+#' @param meta_features `data.table()` task_meta_features
 #' @param meta_feature_names `character()` meta_feature names
-#' @param meta_data `data.table(` data.table of xgboost_meta_data
-#' @return `list()` containing data_ids of 3 most similar tasks, class identifier and meta_features.
+#' @param meta_data `data.table()` xgboost_meta_data
+#' @return `list()` containing data_ids of 3 most similar tasks, class identifier and their meta_features.
 #' @export
 find_similar_tasks = function(task_id, meta_features, meta_feature_names, meta_data) {
 
@@ -22,7 +21,7 @@ find_similar_tasks = function(task_id, meta_features, meta_feature_names, meta_d
   new_meta_features_mutated = mutate_metafeatures(new_meta_features)
   meta_features_mutated = mutate_metafeatures(meta_features)
 
-  # keep only data_ids that achieve at least for once over 90% accuracy
+  # Keep only data_ids that achieve at least for once over 90% accuracy
   selected_data_ids = meta_data[, .(max.auc = max(auc)), by = "data_id"][max.auc > 0.8, data_id]
   meta_features_mutated = meta_features_mutated[data_id %in% selected_data_ids]
   # Impute missing values
@@ -45,7 +44,7 @@ find_similar_tasks = function(task_id, meta_features, meta_feature_names, meta_d
     cos_sim,
     as.numeric(new_meta_features_mutated[, - c("data_id")])
   )
-  # choose at most 3 similar datasets in similarity diviance 0.05
+  # Choose at most 3 similar data sets in max similarity diviance 0.05
   data_ids = meta_features_mutated$data_id[order(rank(-similarities))]
   similarities_chosen = round(
     na.omit(sort(similarities[similarities > (max(similarities) - 0.05)], decreasing = TRUE)[1:3]),

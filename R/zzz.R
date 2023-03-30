@@ -3,12 +3,12 @@
 #' @import mlr3
 #' @import mlr3learners
 #' @import mlr3pipelines
+#' @import mlr3misc
 
 # @import curl
 # @import e1071
 # @import future
 # @import mlr3oml
-# @import mlr3misc
 
 # Task-ids used in the Analysis
 #' @export

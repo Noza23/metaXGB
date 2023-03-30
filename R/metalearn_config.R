@@ -34,7 +34,7 @@ metalearn_config = function(
 
   # Return similar Tasks for given task_id
   cluster = find_similar_tasks(
-    task_id,
+    task_id = task_id,
     meta_features = meta_features,
     meta_feature_name = meta_feature_names,
     meta_data = xgboost_meta_data
@@ -86,6 +86,7 @@ metalearn_config = function(
     perf_est_data = perf_est_data
   )
 
+  # Save resulting configurations
   fn_configs = sprintf("configs_%s", cluster$class)
   saveRDS(configs_result, file = sprintf("data/results/meta_configs/%s", fn_configs))
   catf("[INFO] Selectd configurations have been saved under data/results/meta_configs/%s", fn_configs)

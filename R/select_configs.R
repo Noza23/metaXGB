@@ -14,27 +14,26 @@ select_configs = function(perf_predictions, perf_est_data, sigma = 0.005) {
   assertDataTable(perf_est_data)
   assertNumber(sigma, lower = 0, upper = 1)
 
-  # join prediction data on train_time
+  # Join prediction data with train_time column
   perf_predictions[, c("timetrain", "data_id") := perf_est_data[perf_predictions$row_ids, .(timetrain, data_id)]]
 
-
-  # configs in sigma range
-  #selected_configs = perf_predictions[response %between% c(max(response) - sigma, max(response) + sigma)]
+  # All Configs in sigma range per data_id
   selected_configs = perf_predictions[ , .SD[response > max(response) - sigma, ], by = "data_id"]
-  # configs with highest predicted performance for each dataset in cluster
+
+  # Configs with highest predicted performance for each data_id in group of tasks
   config_highest_ids = selected_configs[order(-response, timetrain)][, .SD[1, .(row_ids, response)], by = "data_id"]
   config_highest = cbind(
     perf_est_data[config_highest_ids$row_ids, ],
     estimated_perf = config_highest_ids$response
   )
 
-  # fastest performing configuration in sigma range for each dataset in cluster
+  # Fastest performing configuration in sigma range for each data_id in group of tasks
   config_fastest_ids = selected_configs[order(timetrain)][, .SD[1, .(row_ids, response)], by = "data_id"]
   config_fastest = cbind(
     perf_est_data[config_fastest_ids$row_ids, ],
     estimated_perf = config_fastest_ids$response
   )
 
-  #return configurations
+  # Return configurations
   list(config_highest = config_highest, config_fastest = config_fastest)
 }

@@ -16,8 +16,8 @@ classify_good_bad = function(cluster_data, threshold = 0.55, nthread = future::a
   assertNumber(threshold, lower = 0 , upper = 1)
   assertInt(nthread)
   assertString(class)
-  # replace AUC with "good" "bad" at some threshold level
-  classifier_data = cluster_data[, - c("task_id", "data_id", "dataset", "repl")
+  # replace AUC column with "good" "bad" at some threshold level
+  classifier_data = cluster_data[, - c("task_id", "dataset", "repl")
   ][, auc := ifelse(auc > threshold, "good", "bad")]
 
   # Create binary classification task
@@ -27,6 +27,8 @@ classify_good_bad = function(cluster_data, threshold = 0.55, nthread = future::a
     id = "Good_Bad_Classifier",
     positive = "good"
   )
+  # Set stratum for stratification in resampling
+  classifier_task$set_col_roles("data_id", roles = "stratum")
 
   # Classification Random Forest as learner
   classifier_rf = lrn(
@@ -37,7 +39,7 @@ classify_good_bad = function(cluster_data, threshold = 0.55, nthread = future::a
   classifier_rf$predict_type = "prob"
   classifier_rf$encapsulate = c(train = "evaluate", predict = "evaluate")
 
-  # 2 fold cv resampling
+  # 3 fold CV resampling
   rr = resample(
     classifier_task,
     classifier_rf,
@@ -45,7 +47,7 @@ classify_good_bad = function(cluster_data, threshold = 0.55, nthread = future::a
     store_models = TRUE
   )
 
-  cat("\n[INFO] Random Forest has achieved following performances on test sets of 2 fold CV:\n\n")
+  cat("\n[INFO] Random Forest has achieved following performances on test sets of 3 fold CV:\n\n")
   print(rr$score())
   Sys.sleep(5)
 
@@ -57,7 +59,7 @@ classify_good_bad = function(cluster_data, threshold = 0.55, nthread = future::a
   print(predicts$confusion)
   print(predicts$score(msrs(c("classif.tpr", "classif.fpr"))))
 
-  #Saving performance results
+  # Saving performance results
   fn = sprintf("GoodBad_perf_%s", class)
   res = list(
     classif.ce = rr$score(),
@@ -67,7 +69,7 @@ classify_good_bad = function(cluster_data, threshold = 0.55, nthread = future::a
   catf("\n[INFO] Performance results have been saved under: data/results/meta_learners/classifier/%s", fn)
   Sys.sleep(2)
 
-  # Return resulting "good" points from the cluster data for performance estimation model.
+  # Take resulting "good" points from the cluster data for performance estimation model.
   perf_est_ids = as.data.table(predicts)[response == "good", row_ids]
   cluster_data[perf_est_ids, - c("task_id", "dataset", "repl")]
 }
