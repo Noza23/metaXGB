@@ -29,7 +29,7 @@ metalearn_config = function(
   assertNumber(task_id, lower = 1)
   assertDataTable(meta_features)
   assertDataTable(xgboost_meta_data)
-  assertNumber(seed, null.ok = TRUE)
+  assertNumeric(seed, null.ok = TRUE)
   set.seed(seed)
 
   # Return similar Tasks for given task_id
