@@ -56,8 +56,8 @@ setup_project = function(dir, timeout = 300) {
   catf("\n[INFO] Download main.R script from Github https://github.com/Noza23/metaBoost/paper \n")
   utils::download.file("https://github.com/Noza23/metaBoost/raw/main/paper/main.R", destfile = "main.R")
 
-  catf("\n[INFO] Setting up the Project has been completed!\n")
-
+  cat("\n[INFO] Setting up the Project has been completed!\n")
+  cat("\n[INFO] Follow the R script 'main.R' located in project directory metaXGB!\n")
   # Setting back timeout option!
   options(timeout = 60)
 

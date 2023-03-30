@@ -14,7 +14,7 @@ result_default = lapply(
   test_ids,
   FUN = metaBoost::run_config,
   seed = 111,
-  defult = TRUE
+  default = TRUE
 )
 
 # Meta-Learn configuration and run in on {test_ids}: Meta-Learning takes about 7-8 mins for each task_id.

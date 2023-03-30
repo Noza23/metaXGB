@@ -4,6 +4,7 @@
 #' @import mlr3learners
 #' @import mlr3pipelines
 #' @import mlr3misc
+#' @import mlr3oml
 
 #' @title  Test IDs
 #' @description test_ids refers to task_ids from OpenML.org used in Analysis.
