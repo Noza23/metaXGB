@@ -61,7 +61,7 @@ find_similar_tasks = function(task_id, meta_features, meta_feature_names, meta_d
   fn = sprintf("plots/similarity/similarity_%s.pdf", task_id)
   catf("[INFO] Saving similarity plot in %s\n", fn)
   # Saving plot
-  ggplot2::ggsave(sim_plot, filename = fn)
+  ggplot2::ggsave(sim_plot, filename = fn, width = 30, height = 10)
 
   n = length(similarities_chosen)
   data_ids = data_ids[seq_len(n)]

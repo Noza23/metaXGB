@@ -45,7 +45,7 @@ run_perf_est_model = function(perf_est_data, nthread = future::availableCores()[
   new_data_id = sample(preds$row_ids, size = 1)
   new_data = perf_est_data[new_data_id, ]
   cat("\n[INFO] Starting creating interpretation Plots in directory plots \n\n")
-  interpret_learner(
+  interpret_model(
     model = mlr3misc::map(as.data.table(rr)$learner, "model")[[1]],
     learner = rr$learners[[1]],
     task = perf_est_task$clone()$filter(rr$predictions()[[1]]$row_ids),
