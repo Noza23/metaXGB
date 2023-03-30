@@ -55,8 +55,8 @@ find_similar_tasks = function(task_id, meta_features, meta_feature_names, meta_d
   sim_plot = ggplot2::ggplot(
     data = data.frame(data_id = factor(data_ids, levels = data_ids), cos_similarity = sort(similarities, T))
   )  +
-    ggplot2::geom_col(aes(x = data_id, y = cos_similarity)) +
-    ggplot2::theme_classic() + ggplot2::theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+    ggplot2::geom_col(ggplot2::aes(x = data_id, y = cos_similarity)) +
+    ggplot2::theme_classic() + ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5, hjust=1))
 
   fn = sprintf("plots/similarity/similarity_%s.pdf", task_id)
   catf("[INFO] Saving similarity plot in %s\n", fn)
