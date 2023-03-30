@@ -41,10 +41,10 @@ compare_results = function() {
     align = "center"
   )
 
-  kbl_res = kableExtra::kable_styling(res, bootstrap_options = c("striped", "hover"))
+  kbl_res = kableExtra::kable_styling(kbl, bootstrap_options = c("striped", "hover"))
   print(kbl_res)
   fn = "data/results/performance.html"
-  kableExtra::save_kable(res_kbl, file = fn)
+  kableExtra::save_kable(kbl_res, file = fn)
   catf("\n[INFO] Performance Table has been saved under %s\n", fn)
 
   invisible(list(default_perf = default_matrix, meta_perf = meta_matrix))
