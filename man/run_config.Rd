@@ -9,7 +9,7 @@ run_config(
   config = NULL,
   meta_config = TRUE,
   default = FALSE,
-  seed = NULL,
+  seed = 111,
   nthread = future::availableCores()[[1]],
   meta_features
 )

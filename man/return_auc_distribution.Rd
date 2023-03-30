@@ -15,5 +15,5 @@ return_auc_distribution(data_ids, meta_data)
 \code{table()} of frequencies of AUC.
 }
 \description{
-Print table and save plot of distribution of AUC for given data_ids.
+Return table of distribution of AUC for given data_ids.
 }
