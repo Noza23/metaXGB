@@ -44,13 +44,13 @@ setup_project = function(dir, timeout = 300) {
   }
 
   link = "https://syncandshare.lrz.de/dl/fiV9MfvupyNzWpT99M5RhFh2/.dir"
-  download.file(link, destfile = "data/external/external_data.zip", mode = "wb")
+  utils::download.file(link, destfile = "data/external/external_data.zip", mode = "wb")
 
   catf("[INFO] Unziping data ...'\n")
-  unzip("data/external/external_data.zip", exdir = "data/external/")
+  utils::unzip("data/external/external_data.zip", exdir = "data/external/")
 
   catf("\n[INFO] Download main.R script from Github https://github.com/Noza23/metaBoost/paper \n")
-  download.file("https://github.com/Noza23/metaBoost/raw/main/paper/main.R", destfile = "main.R")
+  utils::download.file("https://github.com/Noza23/metaBoost/raw/main/paper/main.R", destfile = "main.R")
 
   catf("\n[INFO] Setting up the Project has been completed!\n")
 

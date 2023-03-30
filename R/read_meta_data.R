@@ -9,7 +9,7 @@ read_meta_data = function(file) {
 
   meta_data = data.table::fread(file)
   setkey(meta_data, data_id, auc)
-  catf("[INFO] xgboost_meta_data contains %d missing values\n", sum(!complete.cases(meta_data))) # missing data check
+  catf("[INFO] xgboost_meta_data contains %d missing values\n", sum(!stats::complete.cases(meta_data))) # missing data check
 
   # Skewness
   cat("[INFO] Hyperparameters in meta_data have following skewness:\n")

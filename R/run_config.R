@@ -101,7 +101,7 @@ run_config = function(
       meta_config,
       FUN = function(x) {
         apply(
-          x,
+          x[1, ],
           MARGIN = 1,
           FUN = function(x) run_config(task_id, config = as.list(x), seed = seed, default = FALSE, meta_config = FALSE)
         )

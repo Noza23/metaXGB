@@ -8,16 +8,16 @@
 #' @param class (`character(1)`) identifier for group of similar tasks
 #' @return invisble `list()` containing plots.
 #' @export
-interpret_learner = function(model, learner, task, new_data, class) {
+interpret_model = function(model, learner, task, new_data, class) {
   assert_learner(learner)
   assert_task(task)
   assertDataTable(new_data, nrows = 1)
   assertString(class)
 
   # Feature Impurity bar plot
-  pdf(file = sprintf("plots/impurity_PerfEst_%s.pdf", class), width = 30)
-  barplot(learner$importance())
-  dev.off()
+  grDevices::pdf(file = sprintf("plots/impurity_PerfEst_%s.pdf", class), width = 30)
+  graphics::barplot(learner$importance())
+  grDevices::dev.off()
   catf(
     "\n[INFO] Feature Impurity plot for Perf Estimator has been saved under plots/impurity_PerfEst_%s.pdf\n",
     class
@@ -31,8 +31,8 @@ interpret_learner = function(model, learner, task, new_data, class) {
     y = task$truth()
   )
   cp = suppressWarnings(predict_profile(learner_explain, new_data))
-  cp_DALEX = plot(cp) + ggtitle("Ceteris paribus for new prediction", " ")
-  ggsave(
+  cp_DALEX = plot(cp) + ggplot2::ggtitle("Ceteris paribus for new prediction", " ")
+  ggplot2::ggsave(
     cp_DALEX,
     filename = sprintf("plots/CP_%s.pdf", class),
     height = 15,
