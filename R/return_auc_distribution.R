@@ -1,5 +1,5 @@
 #' @title Distribution of AUC
-#' @description Print table and save plot of distribution of AUC for given data_ids.
+#' @description Return table of distribution of AUC for given data_ids.
 #' @param data_ids `numeric()` numeric vector of data_ids
 #' @param meta_data `data.table()` xgboost_meta_data
 #' @return `table()` of frequencies of AUC.

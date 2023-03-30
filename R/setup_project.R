@@ -29,6 +29,10 @@ setup_project = function(dir, timeout = 300) {
   dir.create("data/results/meta_learners/classifier")
   dir.create("data/results/meta_learners/perf_estimator")
   dir.create("plots")
+  dir.create("plots/similarity")
+  dir.create("plots/CP")
+  dir.create("plots/auc_dist")
+  dir.create("plots/impurity")
 
   catf("[INFO] Downloading task meta_features and xgboost_meta_data in directory data/results'\n")
   options(timeout = timeout)

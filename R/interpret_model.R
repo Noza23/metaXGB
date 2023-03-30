@@ -15,11 +15,11 @@ interpret_model = function(model, learner, task, new_data, class) {
   assertString(class)
 
   # Feature Impurity bar plot
-  grDevices::pdf(file = sprintf("plots/impurity_PerfEst_%s.pdf", class), width = 30)
+  grDevices::pdf(file = sprintf("plots/impurity/impurity_PerfEst_%s.pdf", class), width = 30)
   graphics::barplot(learner$importance())
   grDevices::dev.off()
   catf(
-    "\n[INFO] Feature Impurity plot for Perf Estimator has been saved under plots/impurity_PerfEst_%s.pdf\n",
+    "\n[INFO] Feature Impurity plot for Perf Estimator has been saved under plots/impurity/impurity_PerfEst_%s.pdf\n",
     class
   )
   Sys.sleep(2)
@@ -34,12 +34,12 @@ interpret_model = function(model, learner, task, new_data, class) {
   cp_DALEX = plot(cp) + ggplot2::ggtitle("Ceteris paribus for new prediction", " ")
   ggplot2::ggsave(
     cp_DALEX,
-    filename = sprintf("plots/CP_%s.pdf", class),
+    filename = sprintf("plots/CP/CP_%s.pdf", class),
     height = 15,
     width = 20
   )
   catf(
-    "\n[INFO] Ceteris Paribus plot for Perf Estimator has been saved under plots/CP_%s.pdf\n",
+    "\n[INFO] Ceteris Paribus plot for Perf Estimator has been saved under plots/CP/CP_%s.pdf\n",
     class
   )
   Sys.sleep(2)

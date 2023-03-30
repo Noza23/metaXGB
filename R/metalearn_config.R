@@ -60,10 +60,10 @@ metalearn_config = function(
   catf("\n[INFO] AUC distribution in the meta_dataset for given Cluster looks as follows:")
   auc_table = return_auc_distribution(cluster$data_ids, meta_data = xgboost_meta_data)
 
-  grDevices::pdf(file = sprintf("plots/auc_dist_%s.pdf", cluster$class), width = 20)
+  grDevices::pdf(file = sprintf("plots/auc_dist/auc_dist_%s.pdf", cluster$class), width = 20)
   graphics::barplot(auc_table)
   grDevices::dev.off()
-  catf("\n[INFO] AUC distribution plot has been saved under plots/auc_dist_%s.pdf\n", cluster$class)
+  catf("\n[INFO] AUC distribution plot has been saved under plots/auc_dist/auc_dist_%s.pdf\n", cluster$class)
 
   # Random Forest Classifier with default HP config to detect good/bad configurations in the datase
     perf_est_data = classify_good_bad(
