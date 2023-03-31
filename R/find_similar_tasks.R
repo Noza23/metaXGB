@@ -22,7 +22,7 @@ find_similar_tasks = function(task_id, meta_features, meta_feature_names, meta_d
   meta_features_mutated = mutate_metafeatures(meta_features)
 
   # Keep only data_ids that achieve at least for once over 90% accuracy
-  selected_data_ids = meta_data[, .(max.auc = max(auc)), by = "data_id"][max.auc > 0.8, data_id]
+  selected_data_ids = meta_data[, .(max.auc = max(auc)), by = "data_id"][max.auc > 0.9, data_id]
   meta_features_mutated = meta_features_mutated[data_id %in% selected_data_ids]
   # Impute missing values
   imp_num = po(
