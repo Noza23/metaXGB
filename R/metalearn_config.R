@@ -65,7 +65,7 @@ metalearn_config = function(
   grDevices::dev.off()
   catf("\n[INFO] AUC distribution plot has been saved under plots/auc_dist/auc_dist_%s.pdf\n", cluster$class)
 
-  # Random Forest Classifier with default HP config to detect good/bad configurations in the datase
+  # Random Forest Classifier with default HP config to detect good/bad configurations in the dataset
     perf_est_data = classify_good_bad(
     cluster_data,
     threshold = 0.5,

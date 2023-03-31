@@ -8,6 +8,7 @@
 #' @details requires internet connection.
 #' @param task_id `integer(1)` task id
 #' @param meta_features `data.table()` task meta_features
+#' @param xgboost_meta_data `data.table()` xgboost_meta_data
 #' @param config `list()` named list of configurations in case neither default nor meta_config, but custom config
 #' @param meta_config `logical(1)` if TRUE meta-analysis is done to find configuration
 #' @param default `logical(1)` if TRUE learner is trained with default configuration
@@ -22,7 +23,8 @@ run_config = function(
     default = FALSE,
     seed = 111,
     nthread = future::availableCores()[[1]],
-    meta_features
+    meta_features,
+    xgboost_meta_data
 ) {
   # Check internet connection
   if (!curl::has_internet()) {stop("Internet Connection not detected")}
@@ -90,7 +92,7 @@ run_config = function(
       task_id,
       meta_feature_names,
       meta_features = meta_features,
-      meta_data,
+      xgboost_meta_data = xgboost_meta_data,
       seed = seed
     )
     meta_final_result = lapply(

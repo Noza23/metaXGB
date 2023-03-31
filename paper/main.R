@@ -25,7 +25,8 @@ result_meta = lapply(
   FUN = metaBoost::run_config,
   seed = 111,
   meta_config = TRUE,
-  meta_features = features
+  meta_features = features,
+  xgboost_meta_data = meta_data
 )
 
 # Compare results
