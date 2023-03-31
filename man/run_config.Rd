@@ -11,7 +11,8 @@ run_config(
   default = FALSE,
   seed = 111,
   nthread = future::availableCores()[[1]],
-  meta_features
+  meta_features,
+  xgboost_meta_data
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ run_config(
 \item{nthread}{\code{integer(1)} number of cores to be used when training and predicting with learner}
 
 \item{meta_features}{\code{data.table()} task meta_features}
+
+\item{xgboost_meta_data}{\code{data.table()} xgboost_meta_data}
 }
 \value{
 invisible \code{list()} containing resulting AUC and train_time measures.
